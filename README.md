@@ -1,112 +1,85 @@
-# ☕ Cafeteria Order Data Analysis & Forecasting
+# ☕ Cafeteria Sales Analysis & Demand Forecasting
 
 ![Python](https://img.shields.io/badge/Python-3.x-blue)
 ![Pandas](https://img.shields.io/badge/Pandas-Data%20Analysis-green)
-![NumPy](https://img.shields.io/badge/NumPy-Numerical%20Computing-orange)
+![MySQL](https://img.shields.io/badge/MySQL-8.0-orange)
 ![Matplotlib](https://img.shields.io/badge/Matplotlib-Visualization-yellow)
-![MySQL](https://img.shields.io/badge/MySQL-8.0-blue)
 ![Status](https://img.shields.io/badge/Project-Completed-success)
 
-## 📌 Project Overview
+## 📌 About the Project
 
-**Cafeteria Order Data Analysis & Forecasting** is a data analytics project developed as part of an **internship evaluation challenge**.
+This project focuses on analyzing cafeteria order data to understand **sales performance, customer ordering patterns, peak demand periods, and payment behavior**.
 
-The project focuses on analyzing cafeteria transaction data to understand **ordering patterns, peak business hours, branch performance, transaction behavior, and future order demand**.
+The analysis was performed using **Python, Pandas, MySQL, and data visualization techniques**.
 
-The analysis combines **Python, Pandas, NumPy, Matplotlib, and MySQL** to convert raw transaction data into meaningful analytical insights.
+The project was developed as part of the **Kanishka Software Pvt. Ltd. Internship Evaluation Challenge**.
 
 ---
 
-# 🎯 Project Objectives
+## 🎯 Project Goals
 
 The main objectives of this project are:
 
-- Import and analyze cafeteria transaction data
-- Clean and prepare the dataset for analysis
-- Perform Exploratory Data Analysis (EDA)
-- Identify important ordering patterns
-- Analyze peak ordering hours
+- Understand overall cafeteria sales performance
+- Analyze order and revenue patterns
+- Identify high-demand hours
 - Compare branch-level performance
-- Study transaction behavior
-- Generate data visualizations
-- Prepare analytical reports
-- Estimate future order demand
-- Provide business-oriented observations
+- Study payment method usage
+- Perform data cleaning and validation
+- Identify unusual or zero-value transactions
+- Generate useful visualizations
+- Create a baseline demand forecast
+- Convert raw transaction data into business insights
 
 ---
 
-# 📊 Dataset Overview
+## 📊 Dataset Overview
 
-The analyzed dataset contains cafeteria order transactions covering:
+The dataset contains cafeteria transaction records with information related to:
 
-| Metric | Value |
+- Order details
+- Customer information
+- Branch
+- Order amount
+- Payment method
+- Date and time
+- Rewards
+- Discounts
+- Transaction status
+
+### Key Metrics
+
+| Metric | Result |
 |---|---:|
 | Total Transactions | **24,444** |
 | Total Revenue | **₹15,81,186.20** |
 | Average Order Value | **₹64.69** |
-| Unique Customer IDs | **6,661** |
+| Unique Customers | **6,661** |
 | Branches | **3** |
-| Zero-Value Transactions | **435** |
-| Negative-Value Transactions | **0** |
-| Analysis Period | **1 Apr 2024 – 2 Apr 2024** |
+| Zero-Value Orders | **435** |
 
-> **Note:** The available dataset covers only two calendar days. Therefore, the forecasting results should be considered a baseline estimate rather than a long-term prediction.
+> The current dataset covers **1 April 2024 to 2 April 2024**, so the forecasting results are treated as a baseline rather than a long-term prediction.
 
 ---
 
-# 🧹 Data Preparation
+# 🔍 Analysis Performed
 
-Before performing the analysis, the transaction data was checked and prepared.
+## 1. Sales & Revenue Analysis
 
-### Data Preparation Steps
+The project calculates important business KPIs such as:
 
-- Converted date and time fields
-- Checked transaction values
-- Standardized payment methods
-- Identified zero-value transactions
-- Checked negative-value transactions
-- Investigated repeated order numbers
-- Validated branch information
-- Checked customer identifiers
-- Prepared data for EDA and forecasting
+- Total orders
+- Total revenue
+- Average Order Value
+- Daily revenue
+- Daily order volume
+- Branch-wise revenue
 
 ---
 
-# 🔎 Exploratory Data Analysis
+## 2. Branch Analysis
 
-The project performs analysis from multiple perspectives to understand cafeteria business activity.
-
-## ⏰ Peak Ordering Hours
-
-Hourly transaction activity was analyzed to identify periods with higher order volume.
-
-| Hour | Orders |
-|---|---:|
-| 19:00 | **3,746** |
-| 18:00 | **3,571** |
-| 22:00 | **2,127** |
-| 23:00 | **1,846** |
-| 02:00 | **1,302** |
-
-### Orders by Hour
-
-![Orders by Hour](outputs/orders_by_hour.png)
-
-### Revenue by Hour
-
-![Revenue by Hour](outputs/revenue_by_hour.png)
-
-### Observation
-
-The highest recorded order activity occurred at **19:00**, followed by **18:00**.
-
-The evening period shows strong ordering activity within the available two-day dataset.
-
----
-
-# 🏢 Branch Analysis
-
-Branch-level performance was compared using order volume, revenue, and Average Order Value.
+Branch performance was compared using order count, revenue, and AOV.
 
 | Branch | Orders | Revenue | AOV |
 |---|---:|---:|---:|
@@ -116,309 +89,162 @@ Branch-level performance was compared using order volume, revenue, and Average O
 
 ### Revenue by Branch
 
-![Revenue by Branch](outputs/revenue_by_branch.png)
-
-### Orders by Branch
-
-![Orders by Branch](outputs/orders_by_branch.png)
-
-### Observation
-
-Branches 1 and 2 together account for approximately **94.65% of recorded revenue**.
-
-Branch 2 recorded the highest order volume and total revenue, while Branch 1 had the higher Average Order Value.
+![Branch Revenue](outputs/revenue_by_branch.png)
 
 ---
 
-# 💳 Payment Method Analysis
+## 3. Peak Hour Analysis
 
-Payment methods were analyzed to understand transaction distribution and revenue contribution.
+Hourly order data was analyzed to identify periods of high cafeteria activity.
 
-| Payment Method | Orders | Revenue | AOV | Revenue Share |
-|---|---:|---:|---:|---:|
-| Paytm | 10,109 | ₹6,05,197.70 | ₹59.87 | 38.27% |
-| UPI | 5,591 | ₹4,36,978.00 | ₹78.16 | 27.64% |
-| CCA | 2,823 | ₹1,94,752.00 | ₹68.99 | 12.32% |
-| QR | 2,353 | ₹1,14,031.00 | ₹48.46 | 7.21% |
-| Cash | 2,062 | ₹1,08,379.00 | ₹52.56 | 6.85% |
-| Card | 1,210 | ₹1,02,551.00 | ₹84.75 | 6.49% |
-| Unknown | 296 | ₹19,297.50 | ₹65.19 | 1.22% |
+### Highest Recorded Hours
 
-### Payment Revenue
+| Time | Orders |
+|---|---:|
+| 19:00 | 3,746 |
+| 18:00 | 3,571 |
+| 22:00 | 2,127 |
+| 23:00 | 1,846 |
+| 02:00 | 1,302 |
+
+### Order Volume by Hour
+
+![Hourly Orders](outputs/orders_by_hour.png)
+
+This analysis can help with operational planning such as **staff allocation and inventory preparation**.
+
+---
+
+## 4. Payment Method Analysis
+
+Different payment methods were compared based on transaction count and revenue.
+
+| Payment Method | Orders | Revenue |
+|---|---:|---:|
+| Paytm | 10,109 | ₹6,05,197.70 |
+| UPI | 5,591 | ₹4,36,978.00 |
+| CCA | 2,823 | ₹1,94,752.00 |
+| QR | 2,353 | ₹1,14,031.00 |
+| Cash | 2,062 | ₹1,08,379.00 |
+| Card | 1,210 | ₹1,02,551.00 |
+
+### Payment Revenue Distribution
 
 ![Payment Revenue](outputs/payment_revenue.png)
 
-### Observation
+---
 
-Paytm contributed the largest recorded revenue share at **38.27%**.
+# 🧹 Data Quality Analysis
 
-Card transactions had the highest Average Order Value among the listed payment methods at **₹84.75**.
+Before generating insights, the dataset was checked for potential data-quality problems.
+
+### Checks Included
+
+- Missing values
+- Zero-value transactions
+- Negative transaction values
+- Payment method inconsistencies
+- Repeated order numbers
+- Invalid or unusual records
+- Date and time formatting
+
+### Zero-Value Transactions
+
+There were **435 transactions with a grand total of ₹0**.
+
+These records were investigated instead of being automatically removed.
+
+The analysis found that these records contained other transaction information such as positive subtotal/reward values, so they were retained and flagged for further review.
 
 ---
 
-# 💰 Zero-Value Transaction Analysis
-
-During data validation, **435 transactions** were found with:
-
-`grand_total = ₹0`
-
-These transactions were not automatically removed.
-
-Further checks showed:
-
-- Positive subtotal values
-- Positive reward amounts
-- No refund indicators
-- No cancellation reasons
-- No recorded discounts
-
-Therefore, the records were retained and flagged for further analysis.
-
-This demonstrates a validation-based approach to handling unusual transactions instead of deleting them without investigation.
-
----
-
-# 🔁 Repeated Order Number Analysis
-
-Repeated `order_number` values were also investigated.
-
-A repeated order number was not automatically considered a duplicate because transactions could differ by:
-
-- Date
-- Customer
-- Branch
-- Order value
-- Payment method
-
-Therefore, repeated order-number values were **flagged rather than blindly deleted**.
-
----
-
-# 📅 Daily Analysis
+# 📈 Daily Analysis
 
 | Date | Orders | Revenue | AOV |
 |---|---:|---:|---:|
-| 2024-04-01 | 12,168 | ₹7,45,170.20 | ₹61.24 |
-| 2024-04-02 | 12,276 | ₹8,36,016.00 | ₹68.10 |
+| 01-Apr-2024 | 12,168 | ₹7,45,170.20 | ₹61.24 |
+| 02-Apr-2024 | 12,276 | ₹8,36,016.00 | ₹68.10 |
 
-### Daily Order Trend
-
-![Daily Orders](outputs/daily_orders.png)
-
-### Daily Revenue Trend
+### Daily Revenue
 
 ![Daily Revenue](outputs/daily_revenue.png)
 
-### Observation
+### Daily Orders
 
-Across the two recorded days:
-
-- Order volume changed by approximately **0.89%**
-- Revenue changed by approximately **12.19%**
-- Average Order Value changed by approximately **11.20%**
-
-These values represent a **two-day comparison** and should not be interpreted as a long-term business trend.
+![Daily Orders](outputs/daily_orders.png)
 
 ---
 
 # 🔮 Demand Forecasting
 
-A baseline demand estimation approach was used because the available dataset contains only two days of historical transaction data.
+A simple baseline method was used to estimate future daily order demand.
 
-The average daily order volume was calculated as:
+### Baseline Demand
 
-**12,222 orders/day**
+**Average Daily Orders: 12,222**
 
-This value provides a simple reference point for expected daily demand.
-
-### Forecast Visualization
+The calculated average was used as a reference point for demand estimation.
 
 ![Demand Forecast](outputs/demand_forecast.png)
 
-> **Note:** With only two days of historical data, advanced seasonal forecasting cannot be reliably validated. A larger historical dataset would be required for a production forecasting model.
+> Since only two days of historical data are available, the result should not be considered a production-level forecasting model.
 
 ---
 
-# 📈 Key Findings
+# 💡 Key Findings
 
-The analysis produced the following observations:
+The analysis highlighted several useful patterns:
 
-- **24,444** transactions were analyzed.
-- Total recorded revenue was **₹15,81,186.20**.
-- Average Order Value was **₹64.69**.
-- Branch 2 recorded the highest order volume and revenue.
-- Branches 1 and 2 contributed approximately **94.65%** of recorded revenue.
-- **19:00** was the highest recorded order-volume hour.
-- Paytm had the largest recorded revenue share.
-- Card transactions had the highest listed AOV.
-- **435 transactions** had a zero grand total.
-- Repeated order numbers were investigated rather than automatically removed.
-- The limited two-day history restricts long-term forecasting conclusions.
+- Branch 2 recorded the largest order volume.
+- Branches 1 and 2 contributed most of the recorded revenue.
+- The highest order activity occurred around **18:00–19:00**.
+- Paytm represented the largest share of recorded revenue.
+- UPI showed a relatively higher average transaction value.
+- Zero-value transactions were present and required separate investigation.
+- The short historical period limits long-term forecasting.
 
 ---
 
-# 🛠️ Technology Stack
+# 🛠️ Tools & Technologies
 
-### Programming & Analysis
+### Programming
+- Python
 
-- **Python 3.x**
-- **Pandas**
-- **NumPy**
-- **Matplotlib**
+### Data Analysis
+- Pandas
+- NumPy
 
 ### Database
+- MySQL
 
-- **MySQL 8.0**
+### Visualization
+- Matplotlib
 
 ### Development Tools
-
-- **Jupyter Notebook**
-- **Git**
-- **GitHub**
+- Git
+- GitHub
 
 ---
 
-# 🔄 Project Workflow
+# 🔄 Data Analysis Pipeline
 
 ```text
-Raw Cafeteria Data
+Transaction Dataset
         ↓
-Data Import
+MySQL Database
+        ↓
+Data Extraction
         ↓
 Data Cleaning
         ↓
-Data Validation
+Quality Validation
         ↓
-Exploratory Data Analysis
+Exploratory Analysis
         ↓
-Branch & Hourly Analysis
-        ↓
-Payment Analysis
+KPI Calculation
         ↓
 Visualization
         ↓
-Demand Estimation
+Demand Baseline
         ↓
 Business Insights
-```
-
----
-
-# 📂 Project Structure
-
-```text
-Cafeteria-Order/
-│
-├── README.md
-├── forecast.py
-├── eda_analysis.py
-├── Cafeteria_Analysis_Report.md
-├── forecast_results.csv
-├── cafeteria_forecast_preview.png
-└── requirements.txt
-```
-
----
-
-# ▶️ How to Run
-
-## 1. Clone the Repository
-
-```bash
-git clone https://github.com/kartikipatil010/Cafeteria-Order.git
-cd Cafeteria-Order
-```
-
-## 2. Install Dependencies
-
-```bash
-pip install -r requirements.txt
-```
-
-## 3. Run EDA
-
-```bash
-python eda_analysis.py
-```
-
-## 4. Run Forecasting
-
-```bash
-python forecast.py
-```
-
-The analysis generates the required analytical outputs and forecast results.
-
----
-
-# ⚠️ Project Limitations
-
-- The available transaction history covers only two days.
-- Long-term weekly and monthly patterns cannot be established.
-- Seasonal demand cannot be reliably measured.
-- Forecast accuracy cannot be meaningfully evaluated with only two historical days.
-- Repeated order numbers do not necessarily represent duplicate transactions.
-- More historical data would be required for advanced forecasting models.
-
----
-
-# 🚀 Future Enhancements
-
-With additional historical data, this project can be extended with:
-
-### Forecasting
-
-- ARIMA
-- Prophet
-- XGBoost
-- Random Forest
-- LSTM
-- MAE, RMSE and MAPE evaluation
-
-### Analytics
-
-- Weekly and monthly trend analysis
-- Seasonal analysis
-- Branch-level forecasting
-- Product-level demand analysis
-- Customer segmentation
-- RFM analysis
-- Anomaly detection
-
-### Business Intelligence
-
-- Power BI dashboard
-- Tableau dashboard
-- Interactive Plotly dashboard
-- Automated KPI reporting
-
-### Operations
-
-- Inventory demand planning
-- Staff scheduling based on peak hours
-- Branch-specific planning
-- Stock optimization
-
----
-
-# 🎓 Internship Evaluation
-
-This project was developed as part of an **internship evaluation challenge** focused on cafeteria order data analysis and forecasting.
-
-The project demonstrates practical skills in:
-
-**Python + SQL + Data Cleaning + EDA + Visualization + Forecasting + Business Analysis**
-
----
-
-# 👩‍💻 Author
-
-**Kartiki Patil**
-
-Computer Engineering
-
-GitHub: [@kartikipatil010](https://github.com/kartikipatil010)
-
----
-
-⭐ **Thank you for reviewing this project!**
